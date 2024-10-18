@@ -1,0 +1,8 @@
+@import url(..//../index.css);
+
+.container {
+    background-color: var(--text-color);
+    padding: 28px 15%;
+    display: flex;
+    justify-content: space-between;
+}

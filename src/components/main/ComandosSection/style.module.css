@@ -1,0 +1,19 @@
+.section {
+    background-color: var( --bg-color);
+    height: 1190px;
+}
+
+.figure {
+    position: absolute;
+    z-index: 0;
+    right: 0;
+}
+
+.container {
+    padding: 0 15%;
+    padding-top: 40px;
+    color: var(--white-color);
+    display: flex;
+    flex-direction: column;
+}
+
