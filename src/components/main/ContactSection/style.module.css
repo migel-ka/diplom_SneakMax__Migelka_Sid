@@ -27,6 +27,16 @@
     line-height: 42px;
     text-align: left;
     color: rgba(68, 75, 88, 1);
-    ;
+}
 
+@media (max-width: 1366px) {
+    .container {
+        padding: 0 10%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 10%;
+    }
 }

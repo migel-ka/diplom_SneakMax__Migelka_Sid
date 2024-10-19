@@ -1,14 +1,16 @@
 export type Sneaker = {
    id: number,
-   name: string,
+   vendorСode: string,
+   inStock: number,
+   title: string,
    description: string,
+   imgUrl: string,
+   stars: number,
+   sizes: number[],
    price: number,
-   articul: number,
-   image: string,
-   sex: string,
+   oldPrice: number,
+   gender: string,
    color: string,
-   rating: number,
-   contry: string,
    compound: string,
-   availability: number,
+   country: string
 };

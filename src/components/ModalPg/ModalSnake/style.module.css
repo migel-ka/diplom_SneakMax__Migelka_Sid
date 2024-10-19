@@ -32,3 +32,7 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
+.modalBlockDescriptionsPrice {
+    display: flex;
+}

@@ -1,9 +1,23 @@
-.containerLink:not(:last-child) {
-    margin-right: 20px;
+.container{
+    background-color: inherit;
+    border: none;
+    color: var(--white-color);
+    display: flex;
+    font-family: 'IntroBook';
+    font-size: 12px;
 }
+
+.containerCounter{
+    background-color: rgba(241, 79, 79, 1);
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+}
+
 .imgBasket {
     padding: 0 10px;
 }
+
 
 @media (max-width: 1366px) {
     .containerLink:not(:last-child) {

@@ -2,6 +2,8 @@ import { FC, useEffect, useState } from 'react';
 import SneakerCard from '../SneakersCard/index';
 import style from "./style.module.css";
 import { Sneaker } from '../../type/sneaker';
+import ButtonOne from '../../button/button';
+import Loader from '../../Loader';
 
 type Props = {
   filterValue: string;
@@ -33,7 +35,7 @@ const SneakersCards: FC<Props> = ({ filterValue }) => {
   }, []);
 
   const filteredSneakers = filterValue
-    ? sneakers.filter(item => item.name.includes(filterValue))
+    ? sneakers.filter(item => item.title.includes(filterValue))
     : sneakers;
 
   const handleShowMore = () => {
@@ -44,13 +46,13 @@ const SneakersCards: FC<Props> = ({ filterValue }) => {
     <div 
     id="catalog"
     className={style.containerGrid}>
-      {isLoading && <p>...loading</p>}
+      {isLoading && <Loader />}
       {isError && <p>Server is dead</p>}
       {filteredSneakers.slice(0, visibleCount).map(sneaker => (
         <SneakerCard data={sneaker} key={sneaker.id} />
       ))}
       {visibleCount < filteredSneakers.length && ( 
-        <button onClick={handleShowMore}>Показать еще</button>
+        <ButtonOne text="Показать ещё" onClick={handleShowMore} />  
       )}
     </div>
   );

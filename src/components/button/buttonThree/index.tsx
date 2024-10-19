@@ -6,7 +6,7 @@ interface ButtonProps {
   onClick: () => void;
 }
 
-const ButtonOne : FC<ButtonProps> = ({ text, onClick }) => {
+const buttonThree : FC<ButtonProps> = ({ text, onClick }) => {
 
     return (
       <button className={style.button} onClick={onClick}>
@@ -15,4 +15,4 @@ const ButtonOne : FC<ButtonProps> = ({ text, onClick }) => {
     )
   };
   
-  export default ButtonOne;
+  export default buttonThree;

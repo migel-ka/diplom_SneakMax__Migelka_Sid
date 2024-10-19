@@ -1,7 +1,7 @@
 import { FC, ReactNode } from "react";
 import ReactDOM from "react-dom";
 import "./modal.css";
-import NotFound from "../pages/NotFound";
+import NotFound from "../../pages/NotFound";
 
 type Props={
     isOpen: boolean;
