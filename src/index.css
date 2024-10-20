@@ -20,7 +20,7 @@
   --grey-color: rgba(178, 181, 187, 1);
   --white-color: rgba(255, 255, 255, 1);
   --sec-bg-color: rgba(255, 244, 238, 1);
-
+  --small-text: rgba(219, 187, 169, 1);
 }
 
 *{
@@ -76,6 +76,19 @@ a{
 a:hover{
   font-weight: 600;
   color: var(--sec-bg-color);
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(77, 77, 77, 0.2);
+  border-radius: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--bg-color);
 }
 
 

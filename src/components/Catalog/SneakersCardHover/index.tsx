@@ -16,7 +16,7 @@ const SneakersCardHove:FC<Props> = ({ data }) => {
   const closeModal = () => setIsModalOpen(false)
 
   const handleClickAdd = () => {
-    addSneaker(data); // Добавляем текущий товар в хранилище
+    addSneaker(data);
   };
 
   return (

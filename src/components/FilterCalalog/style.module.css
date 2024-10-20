@@ -1,0 +1,12 @@
+.container {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: var(--sec-bg-color);
+    max-width: 280px;
+    max-height: 597px;
+    border-radius: 4px;
+}
+
+.containerStep{
+    padding: 20px 0 10px 0;
+}

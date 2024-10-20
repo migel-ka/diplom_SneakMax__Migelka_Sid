@@ -1,12 +1,12 @@
 import { FC } from "react";
 import style from "./style.module.css";
 
-interface Props {
+interface ButtonProps {
   text: string;
   onClick: () => void;
 }
 
-const ButtonOne : FC<Props> = ({ text, onClick }) => {
+const ButtonTwo : FC<ButtonProps> = ({ text, onClick }) => {
 
     return (
       <button className={style.button} onClick={onClick}>
@@ -15,4 +15,4 @@ const ButtonOne : FC<Props> = ({ text, onClick }) => {
     )
   };
   
-  export default ButtonOne;
+  export default ButtonTwo;

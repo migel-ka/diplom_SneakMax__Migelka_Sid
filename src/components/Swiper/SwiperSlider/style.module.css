@@ -39,3 +39,10 @@
     color: inherit;
     border-radius: 4px;
 }
+
+.containerForm {
+    background-color: var(--small-text);
+    padding: 40px;
+    margin-top: 25px;
+    color: var(--white-color);
+}

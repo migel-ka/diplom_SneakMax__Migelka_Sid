@@ -13,6 +13,7 @@
     "@pbe/react-yandex-maps": "^1.2.5",
     "effector": "^23.2.3",
     "effector-react": "^23.2.1",
+    "nouislider-react": "^3.4.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.27.0",

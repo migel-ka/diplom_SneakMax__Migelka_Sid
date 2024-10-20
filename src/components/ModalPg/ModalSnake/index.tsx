@@ -14,8 +14,8 @@ type Props = {
 
 const ModalSnake: FC<Props> = ({ data, closeModal, isModalOpen }) => {
 
-  const handleClickAdd = () => {
-    addSneaker(data); // Добавляем текущий товар в хранилище
+  const handleClickAdd = (data: any) => {
+    addSneaker(data); 
   };
 
   return (

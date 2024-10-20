@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Sneaker } from "../type/sneaker";
+import Loader from "../Loader";
 
 const SneakerPage = () => {
   const params = useParams<{ id: string }>(); // Указываем тип параметров
@@ -26,9 +27,9 @@ const SneakerPage = () => {
   return (
     <div >
       {sneakerData ? (
-        <div>{sneakerData.name}</div>
+        <div>{sneakerData.title}</div>
       ) : (
-        <div>Loading...</div> // Можно добавить индикатор загрузки
+        <Loader /> // Можно добавить индикатор загрузки
       )}
     </div>
   );

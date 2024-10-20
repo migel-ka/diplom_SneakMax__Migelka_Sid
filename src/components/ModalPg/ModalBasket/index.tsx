@@ -2,8 +2,9 @@ import { FC } from "react";
 import style from "./style.module.css";
 import ButtonOne from "../../button/button";
 import Modal from "../../feature/Modal";
-import { snakeStore } from "../../store/snakeStore";
+import { clearBasket, snakeStore } from "../../store/snakeStore";
 import { useUnit } from "effector-react";
+import FormBasket from "../../Review/formBasket";
 
 type Props = {
     closeModalBasket: () => void;
@@ -13,8 +14,10 @@ type Props = {
 const ModalBasket: FC<Props> = ({ closeModalBasket, isModalOpenBasket }) => {
     const sneaker = useUnit(snakeStore);
 
+    const totalPrice = sneaker.reduce((sum, sneake) => sum + sneake.price, 0);
+
     const handleClick = () => {
-        console.log(`Товары на сумму в количестве ${sneaker.length}`); 
+        clearBasket();
     };
 
     return (
@@ -22,16 +25,23 @@ const ModalBasket: FC<Props> = ({ closeModalBasket, isModalOpenBasket }) => {
             <div className={style.container}>
                 <h2>Оформление заказа</h2>
                 <div className={style.containerBord}>
-                    <p>Товаров в заказе: {sneaker.length}</p>
-                    <p>Общая сумма: {/* Здесь можно добавить логику для подсчета общей суммы */}</p>
-                    <p>Состав заказа</p>
-                    {sneaker.map(sneake => (
-                        <div key={sneake.id} className={style.sneakerItem}>
-                            <p>Название: {sneake.title}</p>
-                            <p>Цена: {sneake.price} ₽</p>
-                        </div>
-                    ))}
+                    {sneaker.length > 0 ? (
+                        <>
+                            <p>Товаров в заказе: <b>{sneaker.length} шт.</b></p>
+                            <p>Общая сумма: <b>{totalPrice} ₽</b></p>
+                            <p>Состав заказа</p>
+                            {sneaker.map(sneake => (
+                                <div key={sneake.id} className={style.sneakerItem}>
+                                    <p>Название: {sneake.title}</p>
+                                    <p>Цена: {sneake.price} ₽</p>
+                                </div>
+                            ))}
+                        </>
+                    ) : (
+                        <p>Корзина пуста</p> 
+                    )}
                 </div>
+                {sneaker.length > 0 && <FormBasket />} 
                 <ButtonOne onClick={handleClick} text="Оформить заказ" />
             </div>
         </Modal>

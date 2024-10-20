@@ -1,11 +1,12 @@
 import { FC, useState } from "react";
 import style from "./style.module.css";
 import ButtonOne from "../../button/button";
-import Modal from "../../feature/Modal";
 import { removeSneaker, snakeStore } from "../../store/snakeStore";
 import { useUnit } from "effector-react";
 import ModalBasket from "../ModalBasket";
 import TRASH from "..//..//images/modal/trash.svg";
+import ModalMini from "../../feature/ModalMini";
+import Modal from "../../feature/Modal";
 
 type Props = {
     closeModal: () => void;
@@ -36,13 +37,13 @@ const ModalBasketMini: FC<Props> = ({ closeModal, isModalOpen }) => {
                             <p>{sneake.title}</p>
                             <span>{sneake.price}</span>
                         </div>
-                           <button onClick={() => removeSneaker(index)}>
+                           <button className={style.sneakerItemBtn} onClick={() => removeSneaker(index)}>
                             <img src={TRASH} alt="TRASH" />
                            </button>
                     </div>
                   ))}
               </div>
-              <div>
+              <div className={style.containerBtn}>
                 <div>
                     <p>Итого:</p>
                     <span> { sneaker.map(x => x.price).reduce((a, b) => a + b) }</span>

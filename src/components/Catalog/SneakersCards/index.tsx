@@ -4,6 +4,7 @@ import style from "./style.module.css";
 import { Sneaker } from '../../type/sneaker';
 import ButtonOne from '../../button/button';
 import Loader from '../../Loader';
+import NotFound from '../../pages/NotFound';
 
 type Props = {
   filterValue: string;
@@ -47,7 +48,7 @@ const SneakersCards: FC<Props> = ({ filterValue }) => {
     id="catalog"
     className={style.containerGrid}>
       {isLoading && <Loader />}
-      {isError && <p>Server is dead</p>}
+      {isError && <NotFound />}
       {filteredSneakers.slice(0, visibleCount).map(sneaker => (
         <SneakerCard data={sneaker} key={sneaker.id} />
       ))}
