@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import BASKET from "..//images/Basket.svg";
 import style from "./style.module.css";
 
 function Nav() {

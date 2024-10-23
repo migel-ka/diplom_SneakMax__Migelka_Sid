@@ -4,7 +4,6 @@ import style from "./style.module.css";
 import ButtonOne from "../../button/button";
 import DECARD from "..//..//images/modal/Vector.svg";
 import Modal from "../../feature/Modal";
-import { addSneaker } from "../../store/snakeStore";
 
 type Props = {
     data: Sneaker;

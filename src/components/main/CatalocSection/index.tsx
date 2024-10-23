@@ -1,7 +1,7 @@
 import { FC } from "react";
 import SneakersCards from "../../Catalog/SneakersCards";
 import style from "./style.module.css";
-import FilterCalalog from "../../FilterCalalog";
+import FilterCalalog from "../../filter/FilterCalalog";
 
 interface Props {
   filterValue: string; 
@@ -14,7 +14,7 @@ const CatalocSection: FC<Props> = ({ filterValue }) => {
         <h2>Каталог</h2>
         <div className={style.containerFilterCatalog}>
           <div> 
-            <FilterCalalog />
+            <FilterCalalog  />
           </div>
           <div>
             <SneakersCards filterValue={filterValue}/>

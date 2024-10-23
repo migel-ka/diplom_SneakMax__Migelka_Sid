@@ -2,8 +2,6 @@ import { FC } from "react";
 import style from "./style.module.css";
 import ButtonOne from "../../button/button";
 import Modal from "../../feature/Modal";
-import { clearBasket, snakeStore } from "../../store/snakeStore";
-import { useUnit } from "effector-react";
 import FormBasket from "../../Review/formBasket";
 
 type Props = {
@@ -12,7 +10,6 @@ type Props = {
 }
 
 const ModalBasket: FC<Props> = ({ closeModalBasket, isModalOpenBasket }) => {
-    const sneaker = useUnit(snakeStore);
 
     const totalPrice = sneaker.reduce((sum, sneake) => sum + sneake.price, 0);
 

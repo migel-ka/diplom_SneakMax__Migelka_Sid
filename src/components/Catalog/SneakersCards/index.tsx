@@ -1,61 +1,50 @@
-import { FC, useEffect, useState } from 'react';
-import SneakerCard from '../SneakersCard/index';
 import style from "./style.module.css";
-import { Sneaker } from '../../type/sneaker';
-import ButtonOne from '../../button/button';
-import Loader from '../../Loader';
-import NotFound from '../../pages/NotFound';
+import ButtonOne from "../../button/button";
+import React, { FC } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch,RootState } from "..//..//..//store";
+import { ISneakers } from "..//..//slices/basketSlice";
+import { fetchSneakers } from "..//..//slices/sneakersSlice";
+import { changeLimit } from "..//..//slices/dataSlice";
+import SneakersCard from "../SneakersCard";
 
-type Props = {
-  filterValue: string;
+
+interface IProps {
+  gender: string;
 }
 
-const SneakersCards: FC<Props> = ({ filterValue }) => {
-  const [sneakers, setSneakers] = useState<Sneaker[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [visibleCount, setVisibleCount] = useState(6);
+const SneakersCards: FC<IProps> = ({ gender }) => {
+  const dispatch = useDispatch<AppDispatch>();
+  const sneakers = useSelector<RootState, ISneakers[]>(
+    (state) => state.sneakers.data
+  );
+  const limit = useSelector<RootState, number>((state) => state.data.limit);
 
-  const fetchData = async () => {
-    setIsLoading(true);
-    setIsError(false);
-
-    try {
-      const response = await fetch('https://57ebb7d934c23933.mokky.dev/sneakers');
-      const data = await response.json();
-      setSneakers(data);
-    } catch {
-      setIsError(true);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const filteredSneakers = filterValue
-    ? sneakers.filter(item => item.title.includes(filterValue))
-    : sneakers;
-
-  const handleShowMore = () => {
-    setVisibleCount(prevCount => prevCount + 6); 
-  };
+  React.useEffect(() => {
+    dispatch(
+      fetchSneakers({
+        priceFrom: 0,
+        priceTo: 99999,
+        gender: gender,
+        sizes: [],
+      })
+    );
+  }, [dispatch, gender, limit]);
 
   return (
-    <div 
-    id="catalog"
-    className={style.containerGrid}>
-      {isLoading && <Loader />}
-      {isError && <NotFound />}
-      {filteredSneakers.slice(0, visibleCount).map(sneaker => (
-        <SneakerCard data={sneaker} key={sneaker.id} />
-      ))}
-      {visibleCount < filteredSneakers.length && ( 
-        <ButtonOne text="Показать ещё" onClick={handleShowMore} />  
-      )}
-    </div>
+    <>
+     <div
+      id="catalog"
+      className={style.containerGrid}>
+         {sneakers
+          .filter((_, index) => index < limit)
+          .map((item: ISneakers) => (
+            <SneakersCard key={item.id} item={item} />
+          ))}
+      </div>
+      <ButtonOne text="Показать ещё" onClick={() => dispatch(changeLimit())} disabled={limit >= sneakers.length} />
+    </>
+   
   );
 }
 

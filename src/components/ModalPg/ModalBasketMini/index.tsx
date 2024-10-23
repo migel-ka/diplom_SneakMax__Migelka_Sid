@@ -1,11 +1,9 @@
 import { FC, useState } from "react";
 import style from "./style.module.css";
 import ButtonOne from "../../button/button";
-import { removeSneaker, snakeStore } from "../../store/snakeStore";
 import { useUnit } from "effector-react";
 import ModalBasket from "../ModalBasket";
 import TRASH from "..//..//images/modal/trash.svg";
-import ModalMini from "../../feature/ModalMini";
 import Modal from "../../feature/Modal";
 
 type Props = {

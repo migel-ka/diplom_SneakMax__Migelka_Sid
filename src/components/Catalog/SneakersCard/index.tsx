@@ -1,13 +1,18 @@
 import { FC, useState } from "react";
 import style from "./style.module.css";
-import { Sneaker } from "../../type/sneaker";
 import SneakersCardHove from "../SneakersCardHover";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../../store";
+import { ISneakers } from "../../slices/basketSlice";
 
-type Props = {
-  data: Sneaker;
-};
+interface IProps {
+  item: ISneakers;
+}
 
-const SneakersCard: FC<Props> = ({ data }) => {
+const SneakersCard: FC<IProps> = ({ item }) => {
+  const dispatch = useDispatch<AppDispatch>();
+  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+
   const [isHovered, setIsHovered] = useState(false);
   const [isHoveredHove, setIsHoveredHove] = useState(false);
 
@@ -23,20 +28,20 @@ const SneakersCard: FC<Props> = ({ data }) => {
 
   return (
     <div 
-      key={data.id}
+      key={item.id}
       className={style.container}
       onMouseEnter={handleMouseEnter} 
       onMouseLeave={handleMouseLeave}
     >
-      <img className={style.containerImg} src={data.imgUrl} alt={data.title} />
-      <p>{data.title}</p>
-      <span>{data.price} p</span>
+      <img className={style.containerImg} src={item.imgUrl} alt={item.title} />
+      <p>{item.title}</p>
+      <span>{item.price} p</span>
       {isHovered && (
         <div 
           onMouseEnter={() => setIsHoveredHove(true)} 
           onMouseLeave={() => setIsHoveredHove(false)}
         >
-          <SneakersCardHove data={data} key={data.id} />
+          <SneakersCardHove item={item} key={item.id} />
         </div>
       )}
     </div>
